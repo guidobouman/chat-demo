@@ -1,5 +1,8 @@
 import Vue from 'vue';
-import App from './App';
+import VueFire from 'vuefire';
+import App from './app';
+
+Vue.use(VueFire);
 
 /* eslint-disable no-new */
 new Vue({
