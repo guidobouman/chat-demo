@@ -1,26 +1,20 @@
 <template>
   <div class="message-list">
-    <div class="message">
-      <p class="name">Peter</p>
+    <div class="message" v-for="message in messageList">
+      <p class="name">{{ message.name }}</p>
       <p class="content">
-        Yo, die voetbalwedstrijd gisteren nog gezien? Wat een pot he! 😋
-      </p>
-    </div>
-    <div class="message self">
-      <p class="name">Erwin</p>
-      <p class="content">
-        Ugh, kan nog steeds niet geloven dat we hebben verloren. Wat ben jij toch een mazzelaar...
+        {{ message.content }}
       </p>
     </div>
   </div>
 </template>
 
 <script>
+  import MessageListRef from '../message-list-ref';
+
   export default {
-    data() {
-      return {
-        msg: 'Hello Vue!',
-      };
+    firebase: {
+      messageList: MessageListRef,
     },
   };
 </script>
