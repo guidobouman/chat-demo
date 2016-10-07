@@ -1,5 +1,5 @@
 <template>
-  <div class="message-list">
+  <div ref="list" class="message-list">
     <div class="message" v-for="message in messageList">
       <p class="name">{{ message.name }}</p>
       <p class="content">
@@ -13,6 +13,9 @@
   import MessageListRef from '../message-list-ref';
 
   export default {
+    updated() {
+      this.$refs.list.scrollTop = this.$refs.list.scrollHeight;
+    },
     firebase: {
       messageList: MessageListRef,
     },
