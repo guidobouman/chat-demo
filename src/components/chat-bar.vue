@@ -1,6 +1,6 @@
 <template>
   <form class="input-bar" @submit="onSubmit">
-    <input type="text" v-model="message">
+    <input ref="input" type="text" v-model="message">
     <button>Stuur</button>
   </form>
 </template>
@@ -14,6 +14,9 @@
         message: '',
       };
     },
+    mounted() {
+      this.$refs.input.focus();
+    },
     methods: {
       onSubmit(evt) {
         evt.preventDefault();
@@ -24,6 +27,7 @@
         });
 
         this.message = '';
+        this.$refs.input.focus();
       },
     },
   };
