@@ -1,16 +1,34 @@
 <template>
-  <form class="input-bar">
-    <input type="text">
+  <form class="input-bar" @submit="onSubmit">
+    <input ref="input" type="text" v-model="message">
     <button>Stuur</button>
   </form>
 </template>
 
 <script>
+  import MessageListRef from '../message-list-ref';
+
   export default {
     data() {
       return {
-        msg: 'Hello Vue!',
+        message: '',
       };
+    },
+    mounted() {
+      this.$refs.input.focus();
+    },
+    methods: {
+      onSubmit(evt) {
+        evt.preventDefault();
+
+        MessageListRef.push({
+          name: 'Anoniem',
+          content: this.message,
+        });
+
+        this.message = '';
+        this.$refs.input.focus();
+      },
     },
   };
 </script>
